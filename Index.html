@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NE Sauna Supply - Premium Saunas and Cold Plunges</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,500;1,400&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0c0b09; --bg2: #141310; --text: #f2ede4;
+    --text2: rgba(242,237,228,0.55); --text3: rgba(242,237,228,0.28);
+    --border: rgba(242,237,228,0.1);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Barlow', sans-serif; font-weight: 300; background: var(--bg); color: var(--text); }
+  .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+  .label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text3); }
+
+  /* NAV */
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; border-bottom: 0.5px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 100; }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.14em; }
+  nav ul { display: flex; gap: 36px; list-style: none; }
+  nav ul a { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text2); text-decoration: none; transition: color 0.2s; }
+  nav ul a:hover { color: var(--text); }
+  .btn { font-family: 'Barlow', sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; padding: 10px 24px; border: 0.5px solid rgba(242,237,228,0.35); color: var(--text); background: transparent; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.2s, color 0.2s; }
+  .btn:hover { background: var(--text); color: var(--bg); }
+  .btn-primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .btn-primary:hover { background: rgba(242,237,228,0.85); }
+
+  /* HERO */
+  .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; border-bottom: 0.5px solid var(--border); }
+  .hero-left { padding: 64px 48px; display: flex; flex-direction: column; justify-content: space-between; border-right: 0.5px solid var(--border); }
+  .hero-headline { font-size: 88px; line-height: 0.88; margin-top: 20px; }
+  .hero-sub { font-size: 15px; line-height: 1.85; color: var(--text2); max-width: 320px; font-family: 'Lora', serif; font-style: italic; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-img { position: relative; overflow: hidden; background: var(--bg2); min-height: 500px; }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; opacity: 0.88; }
+
+  /* STAMP */
+  .img-stamp { position: absolute; bottom: 10px; right: 10px; background: rgba(12,11,9,0.82); border: 0.5px solid rgba(242,237,228,0.15); padding: 5px 10px; font-family: 'Bebas Neue', sans-serif; font-size: 11px; letter-spacing: 0.12em; color: rgba(242,237,228,0.5); z-index: 2; pointer-events: none; }
+
+  /* TRUST */
+  .trust { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 0.5px solid var(--border); }
+  .trust-item { padding: 28px 32px; border-right: 0.5px solid var(--border); display: flex; flex-direction: column; gap: 6px; }
+  .trust-item:last-child { border-right: none; }
+  .trust-number { font-family: 'Bebas Neue', sans-serif; font-size: 36px; line-height: 1; }
+  .trust-desc { font-size: 12px; color: var(--text3); line-height: 1.5; }
+
+  /* TICKER */
+  .ticker { padding: 12px 48px; border-bottom: 0.5px solid var(--border); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text3); overflow: hidden; white-space: nowrap; }
+  .ticker span { margin: 0 24px; }
+
+  /* PRODUCTS SECTION */
+  .section-header { padding: 48px 48px 32px; display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 0.5px solid var(--border); }
+  .section-title { font-size: 56px; line-height: 1; }
+  .section-link { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text2); text-decoration: none; padding-bottom: 2px; border-bottom: 0.5px solid var(--border); transition: color 0.2s; }
+  .section-link:hover { color: var(--text); }
+
+  /* PRODUCT GRID */
+  .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 0.5px solid var(--border); }
+  .product-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); border-bottom: 0.5px solid var(--border); }
+  .product-card { border-right: 0.5px solid var(--border); transition: background 0.25s; position: relative; }
+  .product-grid .product-card:nth-child(3n), .product-grid-2 .product-card:last-child { border-right: none; }
+  .product-card:hover { background: var(--bg2); }
+
+  .product-imgs { position: relative; height: 240px; overflow: hidden; border-bottom: 0.5px solid var(--border); background: var(--bg2); }
+  .product-imgs img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: opacity 0.4s; }
+  .product-imgs img.secondary { opacity: 0; }
+  .product-card:hover .product-imgs img.primary { opacity: 0; }
+  .product-card:hover .product-imgs img.secondary { opacity: 1; }
+
+  .product-badge { position: absolute; top: 12px; left: 12px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; padding: 4px 10px; background: rgba(242,237,228,0.1); border: 0.5px solid rgba(242,237,228,0.2); color: var(--text2); z-index: 2; }
+  .product-info { padding: 20px 24px 28px; }
+  .product-type { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
+  .product-name { font-family: 'Lora', serif; font-size: 17px; font-weight: 500; margin-bottom: 12px; line-height: 1.3; }
+  .product-specs { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
+  .spec { font-size: 12px; color: var(--text3); display: flex; gap: 8px; }
+  .spec-label { color: var(--text2); min-width: 72px; flex-shrink: 0; }
+  .product-cta { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text2); padding-top: 14px; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; }
+  .product-cta span { transition: transform 0.2s; color: var(--text3); }
+  .product-card:hover .product-cta span { transform: translateX(4px); color: var(--text); }
+
+  /* CONTACT */
+  .contact { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid var(--border); }
+  .contact-left { padding: 64px 48px; border-right: 0.5px solid var(--border); display: flex; flex-direction: column; gap: 28px; }
+  .contact-headline { font-size: 62px; line-height: 0.92; }
+  .contact-body { font-family: 'Lora', serif; font-size: 15px; line-height: 1.85; color: var(--text2); max-width: 320px; }
+  .contact-details { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+  .contact-detail { display: flex; align-items: center; gap: 14px; font-size: 13px; color: var(--text2); }
+  .contact-detail svg { opacity: 0.45; flex-shrink: 0; }
+  .contact-right { padding: 64px 56px; background: var(--bg2); display: flex; flex-direction: column; gap: 18px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text3); }
+  .form-input, .form-select, .form-textarea { background: var(--bg); border: 0.5px solid var(--border); padding: 12px 16px; font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 300; color: var(--text); width: 100%; outline: none; transition: border-color 0.2s; border-radius: 0; -webkit-appearance: none; }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: rgba(242,237,228,0.35); }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--text3); }
+  .form-select option { background: var(--bg); }
+  .form-textarea { height: 90px; resize: none; }
+  .form-submit { margin-top: 6px; padding: 14px 32px; background: var(--text); color: var(--bg); border: none; font-family: 'Barlow', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; width: fit-content; transition: opacity 0.2s; border-radius: 0; }
+  .form-submit:hover { opacity: 0.85; }
+
+  footer { padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.12em; color: var(--text3); }
+  .footer-copy { font-size: 11px; color: var(--text3); }
+
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    nav ul { display: none; }
+    .hero, .contact { grid-template-columns: 1fr; }
+    .hero-left { padding: 40px 24px; border-right: none; border-bottom: 0.5px solid var(--border); }
+    .hero-headline { font-size: 60px; }
+    .hero-img { min-height: 300px; }
+    .trust { grid-template-columns: 1fr; }
+    .trust-item { border-right: none; border-bottom: 0.5px solid var(--border); }
+    .product-grid, .product-grid-2 { grid-template-columns: 1fr; }
+    .product-card { border-right: none !important; border-bottom: 0.5px solid var(--border); }
+    .section-header { padding: 32px 24px 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .contact-left { padding: 40px 24px; border-right: none; border-bottom: 0.5px solid var(--border); }
+    .contact-right { padding: 40px 24px; }
+    footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">NE Sauna Supply</div>
+  <ul>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn">Get a Quote</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="label">Northeast's Premier Sauna and Cold Plunge Source</div>
+      <div class="hero-headline display">Premium Recovery. Delivered to Your Door.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <p class="hero-sub">Saunas and cold plunges built for second homes, vacation properties, and serious recovery setups, shipped from US warehouses directly to your door.</p>
+      <div class="hero-actions">
+        <a href="#products" class="btn btn-primary">View Products</a>
+        <a href="#contact" class="btn">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481724/6533f36d-1cfc-4aa3-938f-72033647f20b_dwkazd.jpg" alt="Outdoor Cedar Sauna" />
+    <div class="img-stamp">NE Sauna Supply</div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="trust-item">
+    <div class="trust-number display">5+</div>
+    <div class="trust-desc">Years supplying premium wellness equipment across the Northeast</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-number display">2-3</div>
+    <div class="trust-desc">Week average lead time, shipped from US warehouses</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-number display">240V</div>
+    <div class="trust-desc">Standard electrical, most vacation homes are already compatible</div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  Ships from US warehouses
+  <span>·</span> Canadian Red Cedar and Hemlock
+  <span>·</span> White glove delivery available
+  <span>·</span> Custom sizes available
+  <span>·</span> No middleman markup
+  <span>·</span> Best quality, best price
+  <span>·</span> Tri-State and Northeast delivery
+</div>
+
+<!-- ALL PRODUCTS -->
+<div class="section-header" id="products">
+  <div>
+    <div class="label" style="margin-bottom:10px;">Full Catalogue</div>
+    <div class="section-title display">Our Products</div>
+  </div>
+  <a href="#contact" class="section-link">Request pricing</a>
+</div>
+
+<!-- OUTDOOR SAUNAS -->
+<div style="padding: 24px 48px 12px; border-bottom: 0.5px solid var(--border); background: var(--bg2);">
+  <div class="label">Outdoor Saunas</div>
+</div>
+
+<div class="product-grid">
+  <div class="product-card">
+    <div class="product-imgs">
+      <img class="primary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779478473/aa30ba08-c070-4e09-bc11-344ff681cb94_fujmyj.jpg" alt="Cedar Square Sauna" />
+      <img class="secondary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481716/d42fc069-b7b5-49fa-9f93-965f3edc950f_ydffml.jpg" alt="Cedar Square Sauna detail" />
+      <div class="product-badge">Outdoor</div>
+      <div class="img-stamp">NE Sauna Supply</div>
+    </div>
+    <div class="product-info">
+      <div class="product-type">Outdoor Sauna</div>
+      <div class="product-name">Cedar Square, 4 Person</div>
+      <div class="product-specs">
+        <div class="spec"><span class="spec-label">Capacity</span> 2 to 4 person</div>
+        <div class="spec"><span class="spec-label">Material</span> Canadian Red Cedar</div>
+        <div class="spec"><span class="spec-label">Power</span> 8kw electric heater</div>
+        <div class="spec"><span class="spec-label">Features</span> LED lighting, glass door, wood base</div>
+      </div>
+      <div class="product-cta">Contact for pricing <span>›</span></div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-imgs">
+      <img class="primary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481724/6533f36d-1cfc-4aa3-938f-72033647f20b_dwkazd.jpg" alt="Red Cedar Barrel Sauna" />
+      <img class="secondary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481728/0e12a351-14fa-44b4-899b-7965a464efc9_tvlvqb.jpg" alt="Barrel Sauna detail" />
+      <div class="product-badge">Bestseller</div>
+      <div class="img-stamp">NE Sauna Supply</div>
+    </div>
+    <div class="product-info">
+      <div class="product-type">Outdoor Barrel Sauna</div>
+      <div class="product-name">Red Cedar Barrel, 4 to 6 Person</div>
+      <div class="product-specs">
+        <div class="spec"><span class="spec-label">Capacity</span> 4 to 6 person</div>
+        <div class="spec"><span class="spec-label">Material</span> Spliced Red Cedar</div>
+        <div class="spec"><span class="spec-label">Power</span> 6kw heater</div>
+        <div class="spec"><span class="spec-label">Features</span> Waterproof shingle, floor mat, accessories included</div>
+      </div>
+      <div class="product-cta">Contact for pricing <span>›</span></div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-imgs">
+      <img class="primary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481734/c0ae8086-038a-4b51-b870-f2a2b78dd7d9_phpylt.jpg" alt="Outdoor Hemlock Cabin" />
+      <img class="secondary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481738/6bf45454-0ca6-4dc2-a4bf-4f288028daee_uw8bte.jpg" alt="Outdoor Hemlock Cabin detail" />
+      <div class="product-badge">Outdoor</div>
+      <div class="img-stamp">NE Sauna Supply</div>
+    </div>
+    <div class="product-info">
+      <div class="product-type">Outdoor Cabin Sauna</div>
+      <div class="product-name">Hemlock Cabin, 6 Person</div>
+      <div class="product-specs">
+        <div class="spec"><span class="spec-label">Capacity</span> 6 person</div>
+        <div class="spec"><span class="spec-label">Material</span> Inner Cedar, Outer Hemlock</div>
+        <div class="spec"><span class="spec-label">Power</span> 6kw electric</div>
+        <div class="spec"><span class="spec-label">Features</span> Custom sizes available, glass panels</div>
+      </div>
+      <div class="product-cta">Contact for pricing <span>›</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- INDOOR SAUNAS -->
+<div style="padding: 24px 48px 12px; border-bottom: 0.5px solid var(--border); background: var(--bg2);">
+  <div class="label">Indoor Saunas</div>
+</div>
+
+<div class="product-grid-2">
+  <div class="product-card">
+    <div class="product-imgs">
+      <img class="primary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481745/Screenshot_2026-05-18_at_9.46.18_PM_fya8ve.png" alt="Indoor Infrared 1 Person" />
+      <img class="secondary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481742/Screenshot_2026-05-18_at_9.46.05_PM_qiejlt.png" alt="Indoor Infrared 1 Person interior" />
+      <div class="product-badge">Indoor</div>
+      <div class="img-stamp">NE Sauna Supply</div>
+    </div>
+    <div class="product-info">
+      <div class="product-type">Indoor Infrared Sauna</div>
+      <div class="product-name">Hemlock Infrared, 1 Person</div>
+      <div class="product-specs">
+        <div class="spec"><span class="spec-label">Capacity</span> 1 person</div>
+        <div class="spec"><span class="spec-label">Material</span> Canadian Hemlock</div>
+        <div class="spec"><span class="spec-label">Power</span> 1350W infrared</div>
+        <div class="spec"><span class="spec-label">Temp</span> 25 to 67C, sessions up to 90 min</div>
+        <div class="spec"><span class="spec-label">Features</span> Touch screen, LED 7 colors, Bluetooth, low EMF</div>
+      </div>
+      <div class="product-cta">Contact for pricing <span>›</span></div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-imgs">
+      <img class="primary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481749/Screenshot_2026-05-18_at_9.45.37_PM_pru0kv.png" alt="Indoor Infrared 2 Person" />
+      <img class="secondary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481747/Screenshot_2026-05-18_at_9.45.27_PM_qeodbu.png" alt="Indoor Infrared 2 Person interior" />
+      <div class="product-badge">Indoor</div>
+      <div class="img-stamp">NE Sauna Supply</div>
+    </div>
+    <div class="product-info">
+      <div class="product-type">Indoor Infrared Sauna</div>
+      <div class="product-name">Hemlock Infrared, 2 Person</div>
+      <div class="product-specs">
+        <div class="spec"><span class="spec-label">Capacity</span> 2 person</div>
+        <div class="spec"><span class="spec-label">Material</span> Canadian Hemlock / Red Cedar</div>
+        <div class="spec"><span class="spec-label">Power</span> 2100W infrared</div>
+        <div class="spec"><span class="spec-label">Features</span> Full glass door, carbon nanofiber panels, Bluetooth, low EMF</div>
+      </div>
+      <div class="product-cta">Contact for pricing <span>›</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- COLD PLUNGES -->
+<div style="padding: 24px 48px 12px; border-bottom: 0.5px solid var(--border); background: var(--bg2);">
+  <div class="label">Cold Plunges</div>
+</div>
+
+<div class="product-grid">
+  <div class="product-card">
+    <div class="product-imgs">
+      <img class="primary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481762/Screenshot_2026-05-10_at_6.44.26_PM_imcgfv.png" alt="Cedar Cold Plunge" />
+      <img class="secondary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481776/43e05a8c-44d8-45bd-beb4-54cc82294d87_dxhbks.jpg" alt="Cedar Cold Plunge detail" />
+      <div class="product-badge">Cold Plunge</div>
+      <div class="img-stamp">NE Sauna Supply</div>
+    </div>
+    <div class="product-info">
+      <div class="product-type">Outdoor Cold Plunge</div>
+      <div class="product-name">Cedar Plunge Tub, Chilled</div>
+      <div class="product-specs">
+        <div class="spec"><span class="spec-label">Capacity</span> 1 person</div>
+        <div class="spec"><span class="spec-label">Material</span> Canadian Red Cedar</div>
+        <div class="spec"><span class="spec-label">Chiller</span> 9000 BTU, cools 4 to 5C per hour</div>
+        <div class="spec"><span class="spec-label">Temp range</span> 3C to 40C</div>
+        <div class="spec"><span class="spec-label">Features</span> Insulated lid, ozone filter, stainless liner, pump</div>
+      </div>
+      <div class="product-cta">Contact for pricing <span>›</span></div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-imgs">
+      <img class="primary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481792/Screenshot_2026-05-18_at_9.48.17_PM_kizf1s.png" alt="G1 All-in-One Cold Plunge" />
+      <img class="secondary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481787/1cbd6c10-cca6-449e-b787-280aa9b94e04_obv3nr.jpg" alt="G1 All-in-One detail" />
+      <div class="product-badge">Indoor / Outdoor</div>
+      <div class="img-stamp">NE Sauna Supply</div>
+    </div>
+    <div class="product-info">
+      <div class="product-type">All-in-One Cold Plunge</div>
+      <div class="product-name">G1 Acrylic Plunge, Indoor/Outdoor</div>
+      <div class="product-specs">
+        <div class="spec"><span class="spec-label">Material</span> Acrylic freestanding</div>
+        <div class="spec"><span class="spec-label">Chiller</span> 1HP built-in</div>
+        <div class="spec"><span class="spec-label">Temp range</span> 3C to 42C</div>
+        <div class="spec"><span class="spec-label">Features</span> Insulated lid, WiFi app control, ozone system, 24/7 operation</div>
+      </div>
+      <div class="product-cta">Contact for pricing <span>›</span></div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="product-imgs">
+      <img class="primary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481785/Screenshot_2026-05-18_at_9.47.32_PM_fryrry.png" alt="Nordic Cold Plunge" />
+      <img class="secondary" src="https://res.cloudinary.com/dxw6jnq7g/image/upload/v1779481781/3dec8f65-b64e-47cc-8629-a7600d6f01e8_xkkwxf.jpg" alt="Nordic Cold Plunge detail" />
+      <div class="product-badge">Cold Plunge</div>
+      <div class="img-stamp">NE Sauna Supply</div>
+    </div>
+    <div class="product-info">
+      <div class="product-type">Premium Cold Plunge</div>
+      <div class="product-name">Nordic Plunge, Heated and Chilled</div>
+      <div class="product-specs">
+        <div class="spec"><span class="spec-label">Capacity</span> 1 person</div>
+        <div class="spec"><span class="spec-label">Chiller</span> High-output, heating function included</div>
+        <div class="spec"><span class="spec-label">Temp range</span> 3C to 42C</div>
+        <div class="spec"><span class="spec-label">Features</span> Insulated lid, liner options, ozone filter system</div>
+      </div>
+      <div class="product-cta">Contact for pricing <span>›</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <div class="label">Get in Touch</div>
+    <div class="contact-headline display">Ready to Upgrade Your Space?</div>
+    <p class="contact-body">Fill out the form and we will get back to you within 24 hours with pricing, availability, and delivery details for your property.</p>
+    <div class="contact-details">
+      <div class="contact-detail">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        hello@nesaunasupply.com
+      </div>
+      <div class="contact-detail">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+        (774) 231-8753
+      </div>
+      <div class="contact-detail">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Serving the Tri-State Area and Northeast
+      </div>
+    </div>
+  </div>
+  <div class="contact-right">
+    <div class="label" style="margin-bottom:4px;">Inquiry Form</div>
+    <form id="inquiry-form" action="https://formspree.io/f/mvzyablw" method="POST" style="display:flex;flex-direction:column;gap:18px;">
+      <div class="form-group">
+        <label class="form-label">Name</label>
+        <input class="form-input" type="text" name="name" placeholder="Your name" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" name="email" placeholder="your@email.com" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone</label>
+        <input class="form-input" type="tel" name="phone" placeholder="(000) 000-0000" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">I'm interested in</label>
+        <select class="form-select" name="interest">
+          <option value="" disabled selected>Select a category</option>
+          <option>Outdoor Sauna</option>
+          <option>Indoor Sauna</option>
+          <option>Cold Plunge</option>
+          <option>Sauna and Cold Plunge Bundle</option>
+          <option>Not sure yet, need advice</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" name="message" placeholder="Tell us about your space, timeline, or any questions..."></textarea>
+      </div>
+      <button type="submit" class="form-submit" id="submit-btn">Send Inquiry</button>
+      <div id="form-success" style="display:none;font-size:13px;color:rgba(242,237,228,0.6);font-family:'Lora',serif;font-style:italic;">Thanks, we will be in touch within 24 hours.</div>
+      <div id="form-error" style="display:none;font-size:13px;color:rgba(242,100,100,0.7);">Something went wrong. Please email us at hello@nesaunasupply.com</div>
+    </form>
+  </div>
+  <script>
+    const form = document.getElementById('inquiry-form');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = 'Sending...';
+      btn.style.opacity = '0.6';
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+        if (res.ok) { form.reset(); btn.style.display = 'none'; document.getElementById('form-success').style.display = 'block'; }
+        else { throw new Error(); }
+      } catch { btn.textContent = 'Send Inquiry'; btn.style.opacity = '1'; document.getElementById('form-error').style.display = 'block'; }
+    });
+  </script>
+</section>
+
+<footer>
+  <div class="footer-logo">NE Sauna Supply</div>
+  <div class="footer-copy">&copy; 2025 NE Sauna Supply. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
